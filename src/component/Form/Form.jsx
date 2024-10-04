@@ -1,16 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
-import './form.scss';
+import "./form.scss";
 import {
   updateUsername,
   updatePassword,
   toggleRememberMe,
   submitForm,
 } from "../../features/formSlice";
-import Button from '../Button/Button';
+import Button from "../Button/Button";
+import { useTranslation } from "react-i18next";
 
 function Form() {
+    
+  const { t } = useTranslation();
 
   //Hook redux, send actions to change the global state
   const dispatch = useDispatch();
@@ -27,13 +30,13 @@ function Form() {
 
   return (
     <section className="sign-in-content">
-        <div className="container-title-form">
+      <div className="container-title-form">
         <FontAwesomeIcon icon={faCircleUser} />
-        <h1>Sign In</h1>
-        </div>
+        <h1>{t("signin.login")}</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">{t("signin.user")}</label>
           <input
             type="text"
             id="username"
@@ -42,7 +45,7 @@ function Form() {
           />
         </div>
         <div className="input-wrapper">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">{t("signin.password")}</label>
           <input
             type="password"
             id="password"
@@ -57,11 +60,9 @@ function Form() {
             checked={rememberMe}
             onChange={() => dispatch(toggleRememberMe())}
           />
-          <label htmlFor="remember-me">Remember me</label>
+          <label htmlFor="remember-me">{t("signin.rememberme")}</label>
         </div>
-        <Button type="submit">
-            Sign In
-        </Button>
+        <Button type="submit">{t("signin.login")}</Button>
       </form>
     </section>
   );

@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import "./header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 
 function Header() {
+  const { t } = useTranslation();
+  
   return (
     <nav className="main-nav">
       <a className="main-nav-logo">
@@ -18,7 +21,7 @@ function Header() {
       <div>
         <Link to="/signin" className="main-nav-item">
           <FontAwesomeIcon icon={faCircleUser} />
-          Sign In
+          {t('signin.login')}
         </Link>
       </div>
     </nav>

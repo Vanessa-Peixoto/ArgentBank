@@ -20,16 +20,16 @@ function Home() {
         <Banner />
         <div className="container-card">
           <Card image={imgCardChat}>
-            <h3 className="feature-item-title">{t("card-info1-title")}</h3>
-            <p>{t("card-info1-description")}</p>
+            <h3 className="feature-item-title">{t("card.title.chat")}</h3>
+            <p>{t("card.description.chat")}</p>
           </Card>
           <Card image={imgCardMoney}>
-            <h3 className="feature-item-title">{t("card-info2-title")}</h3>
-            <p>{t("card-info2-description")}</p>
+            <h3 className="feature-item-title">{t("card.title.money")}</h3>
+            <p>{t("card.description.money")}</p>
           </Card>
           <Card image={imgCardSecurity}>
-            <h3 className="feature-item-title">{t("card-info3-title")}</h3>
-            <p>{t("card-info3-description")}</p>
+            <h3 className="feature-item-title">{t("card.title.security")}</h3>
+            <p>{t("card.description.security")}</p>
           </Card>
         </div>
       </main>
