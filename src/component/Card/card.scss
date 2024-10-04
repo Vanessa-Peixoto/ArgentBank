@@ -1,12 +1,14 @@
 .features {
     display: flex;
     flex-direction: column;
+    flex: 1;
   }
   
   @media (min-width: 920px) {
     .features {
       flex-direction: row;
     }
+
   }
   
   .feature-icon {
@@ -17,8 +19,8 @@
   }
   
   .feature-item {
-    flex: 1;
     padding: 2.5rem;
+    text-align: center;
   }
   
   .feature-item-title {

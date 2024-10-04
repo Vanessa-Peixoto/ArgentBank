@@ -1,5 +1,7 @@
 import logo from "../../assets/images/argentBankLogo.png";
 import './header.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons'; 
 
 function Header() {
   return (
@@ -14,7 +16,7 @@ function Header() {
       </a>
       <div>
         <a className="main-nav-item">
-          <i className="fa fa-user-circle"></i>
+          <FontAwesomeIcon icon={faCircleUser}/>
           Sign In
         </a>
       </div>
