@@ -1,7 +1,8 @@
 import logo from "../../assets/images/argentBankLogo.png";
-import './header.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser } from '@fortawesome/free-solid-svg-icons'; 
+import { Link } from "react-router-dom";
+import "./header.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
   return (
@@ -15,10 +16,10 @@ function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
-        <a className="main-nav-item">
-          <FontAwesomeIcon icon={faCircleUser}/>
+        <Link to="/signin" className="main-nav-item">
+          <FontAwesomeIcon icon={faCircleUser} />
           Sign In
-        </a>
+        </Link>
       </div>
     </nav>
   );
