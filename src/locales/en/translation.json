@@ -22,7 +22,11 @@
         "login": "Sign in",
         "user": "Username",
         "password": "Password",
-        "rememberme": "Remember me"
+        "rememberme": "Remember me",
+        "userError": "Veuillez entrer une adresse e-mail",
+        "passwordError": "Veuillez entrer un mot de passe",
+        "loginError": "Erreur lors de la connexion. Vérifiez vos informations.",
+        "loggingIn": "Connexion en cours..."
     },
     "dashboard": {
         "welcome": "Welcome back",
