@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useLoginMutation } from "../../services/authApi";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginSuccess } from "../../features/authSlice";
 
 function Form() {
 
@@ -63,6 +64,7 @@ function Form() {
     try {
         const response = await login({ email: username, password }).unwrap();
         sessionStorage.setItem("token", response.token);
+        dispatch(loginSuccess(response.user));
         navigate("/dashboard");
       } catch (err) {
         console.error("Failed to login:", err);

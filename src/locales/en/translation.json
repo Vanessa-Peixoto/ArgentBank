@@ -29,6 +29,7 @@
         "loggingIn": "Connexion en cours..."
     },
     "dashboard": {
+        "logout": "Sign Out",
         "welcome": "Welcome back",
         "btnName": "Edit Name",
         "btnTransaction": "View transactions"
