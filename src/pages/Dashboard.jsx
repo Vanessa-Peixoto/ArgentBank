@@ -7,10 +7,12 @@ import { useTranslation } from "react-i18next";
 import { useGetProfileMutation } from "../services/profileApi";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function Dashboard() {
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   //stock user info
   const [userInfo, setUserInfo] = useState({ firstName: "", lastName: "" });
@@ -22,17 +24,19 @@ function Dashboard() {
   const isConnected = useSelector((state) => state.auth.isConnected);
 
   useEffect(() => {
-    if (isConnected) {
+    if (!isConnected) {
+     navigate('/403')
+    } else {
       getProfile();
     }
-  }, [getProfile, isConnected]);
+  }, [getProfile, isConnected, navigate]);
 
   //update local state when data changes
   useEffect(() => {
     if (data && data.body) {
       setUserInfo({
-        firstName: data.body.firstName,
-        lastName: data.body.lastName,
+        firstName: data?.body?.firstName,
+        lastName: data?.body?.lastName,
       });
     }
   }, [data]);
@@ -56,7 +60,7 @@ function Dashboard() {
       <Header />
       <main className="bg-dark">
         <div className="header">
-          <h1>{t("dashboard.welcome") + ' ' + userInfo.firstName}</h1>
+          <h1>{t("dashboard.welcome") + ' ' + userInfo.firstName + ' ' + userInfo.lastName}</h1>
           <EditName firstName={userInfo.firstName} lastName={userInfo.lastName} onUpdate={setUserInfo} refreshProfile={refreshProfile}/>
         </div>
         <h2 className="sr-only">Accounts</h2>

@@ -8,6 +8,7 @@ import { store } from './app/store';
 import Home from '../src/pages/Home';
 import Login from '../src/pages/Login';
 import Dashboard from './pages/Dashboard';
+import Error403 from '../src/component/Error/Error403';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route path='/' element={<Home/>} />
           <Route path='/login' element={<Login/>}/>
           <Route path='/profile' element={<Dashboard/>}/>
+          <Route path='/403' element={<Error403/>}/>
         </Routes>
       </Router>
     </Provider>

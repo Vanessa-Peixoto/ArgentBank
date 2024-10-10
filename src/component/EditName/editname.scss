@@ -1,0 +1,14 @@
+.wrapper-input {
+    display: flex;
+
+    .input-item {
+        width: 90%;
+        height: 30px;
+    }
+}
+
+.wrapper-btn {
+    display: flex;
+    margin: auto;
+    justify-content: space-evenly;
+}

@@ -32,6 +32,15 @@
         "logout": "Sign Out",
         "welcome": "Welcome back",
         "btnName": "Edit Name",
-        "btnTransaction": "View transactions"
+        "btnTransaction": "View transactions",
+        "btnSave": "Save",
+        "btnCancel": "Cancel"
+
+    },
+    "error": {
+        "error403": "403 Forbidden",
+        "error403-description": "Vous n'êtes pas autorisé à accéder à cette page.",
+        "error403-link": "Revenir à la page d'accueil"
     }
+
 }

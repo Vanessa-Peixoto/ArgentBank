@@ -17,17 +17,28 @@
 }
 
 .btn-edit-name {
-    width: 6%;
     font-size: 0.8rem;
     text-decoration: none;
 
     @media screen and (max-width: 480px ) {
-        width: 23%;
         font-size: 1rem;
     }
 
     @media screen and (min-width: 760px ) and (max-width: 1024px) {
-        width: 15%;
         font-size: 1.2rem;
     }
+}
+
+.btn-save {
+    background-color: white;
+    border-color: #00bc77;
+    color: #00bc77;
+    width: 40%;
+}
+
+.btn-cancel {
+    background-color: white;
+    border-color: red;
+    color: red;
+    width: 40%;
 }
