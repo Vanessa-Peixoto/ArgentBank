@@ -3,6 +3,7 @@ import formReducer from '../features/formSlice';
 import { authApi } from '../services/authApi';
 import authReducer from '../features/authSlice';
 import { profileApi } from '../services/profileApi';
+import { updateProfileApi } from '../services/updateProfileApi';
 
 export const store = configureStore({
   reducer: {
@@ -10,7 +11,8 @@ export const store = configureStore({
     auth: authReducer,
     [authApi.reducerPath]: authApi.reducer,
     [profileApi.reducerPath]: profileApi.reducer,
+    [updateProfileApi.reducerPath]: updateProfileApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(authApi.middleware, profileApi.middleware),
+    getDefaultMiddleware().concat(authApi.middleware, profileApi.middleware, updateProfileApi.middleware),
 });
