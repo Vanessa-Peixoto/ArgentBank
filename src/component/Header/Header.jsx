@@ -6,6 +6,8 @@ import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-ic
 import { useTranslation } from "react-i18next";
 import { logout } from "../../features/authSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { useGetProfileMutation } from "../../services/profileApi";
+import { useEffect } from "react";
 
 function Header() {
   const { t } = useTranslation();
@@ -13,7 +15,16 @@ function Header() {
 
    //retrieve authentication status
    const isConnected = useSelector((state) => state.auth.isConnected);
-   const user = useSelector((state) => state.auth.user);
+
+   const [getProfile, { data }] = useGetProfileMutation();
+
+   useEffect(() => {
+    if (isConnected) {
+      getProfile();
+    }
+  }, [getProfile, isConnected]);
+
+  const firstName = data?.body?.firstName;
   
    //disconnect function
    const handleLogout = () => {
@@ -36,16 +47,16 @@ function Header() {
           <>
             <Link className="main-nav-item">
             <FontAwesomeIcon icon={faCircleUser} />
-              {user?.firstName}
+              {firstName}
             </Link>
             
-            <Link to='/signin' className="main-nav-item" onClick={handleLogout}>
+            <Link to='/' className="main-nav-item" onClick={handleLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />
                 {t("dashboard.logout")}
             </Link>
           </>
         ) : (
-          <Link to="/signin" className="main-nav-item">
+          <Link to="/login" className="main-nav-item">
             <FontAwesomeIcon icon={faCircleUser} />
             {t("signin.login")}
           </Link>
