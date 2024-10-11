@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isConnected: false,
-    user: null,
+    isConnected: !!sessionStorage.getItem('token'),
+    user: JSON.parse(sessionStorage.getItem('user')) || null,
 }
 
 const authSlice = createSlice({
@@ -15,10 +15,15 @@ const authSlice = createSlice({
         },
         logout: (state) => {
             state.isConnected = false,
-            state.user = null
-        } 
+            state.user = null,
+            sessionStorage.removeItem('token');
+        },
+        restoreSession: (state, action) => {
+            state.isConnected = true;
+            state.user = action.payload;
+        }
     }
 })
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logout, restoreSession } = authSlice.actions;
 export default authSlice.reducer;

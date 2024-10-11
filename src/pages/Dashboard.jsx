@@ -5,14 +5,16 @@ import Account from "../component/Account/Account";
 import "./dashboard.scss";
 import { useTranslation } from "react-i18next";
 import { useGetProfileMutation } from "../services/profileApi";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import { checkTokenValidity } from "../actions/authAction";
 
 function Dashboard() {
 
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //stock user info
   const [userInfo, setUserInfo] = useState({ firstName: "", lastName: "" });
@@ -24,12 +26,14 @@ function Dashboard() {
   const isConnected = useSelector((state) => state.auth.isConnected);
 
   useEffect(() => {
+    dispatch(checkTokenValidity());
+
     if (!isConnected) {
      navigate('/403')
     } else {
       getProfile();
     }
-  }, [getProfile, isConnected, navigate]);
+  }, [getProfile, isConnected, navigate, dispatch]);
 
   //update local state when data changes
   useEffect(() => {
