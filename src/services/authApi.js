@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+/**
+ * @description Slice for authentication, specifically for logging in.
+*/
 export const authApi = createApi({
     //name in the store
     reducerPath: "authApi",

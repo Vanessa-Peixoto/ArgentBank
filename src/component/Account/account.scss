@@ -1,23 +1,22 @@
 .account {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    align-items: center;
-    border: 1px solid black;
-    background-color: #fff;
-    width: 80%;
-    margin: 0 auto;
-    padding: 1.5rem;
-    box-sizing: border-box;
-    text-align: left;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border: 1px solid black;
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  text-align: left;
+  margin-bottom: 2rem;
 
-    @media screen and (max-width: 480px ) {
-        flex-direction: column;
-        align-items: normal;
-    }
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    align-items: normal;
   }
-  
+
   .account-amount {
     margin: 0;
     font-size: 2.5rem;
@@ -34,3 +33,4 @@
     font-size: 1rem;
     font-weight: normal;
   }
+}

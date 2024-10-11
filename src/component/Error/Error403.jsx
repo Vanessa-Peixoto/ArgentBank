@@ -2,6 +2,10 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import './error403.scss';
 
+/**
+ * @component
+ * @returns {JSX.Element} Error403 component
+ */
 function Error403() {
 
     const {t} = useTranslation();

@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 import { checkTokenValidity } from "../actions/authAction";
 
 function Dashboard() {
-
+  
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ function Dashboard() {
     dispatch(checkTokenValidity());
 
     if (!isConnected) {
-     navigate('/403')
+      navigate("/403");
     } else {
       getProfile();
     }
@@ -49,7 +49,6 @@ function Dashboard() {
     getProfile();
   };
 
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -58,14 +57,24 @@ function Dashboard() {
     return <div>Error fetching profile: {error.message}</div>;
   }
 
-
   return (
     <>
       <Header />
       <main className="bg-dark">
         <div className="header">
-          <h1>{t("dashboard.welcome") + ' ' + userInfo.firstName + ' ' + userInfo.lastName}</h1>
-          <EditName firstName={userInfo.firstName} lastName={userInfo.lastName} onUpdate={setUserInfo} refreshProfile={refreshProfile}/>
+          <h1>
+            {t("dashboard.welcome") +
+              " " +
+              userInfo.firstName +
+              " " +
+              userInfo.lastName}
+          </h1>
+          <EditName
+            firstName={userInfo.firstName}
+            lastName={userInfo.lastName}
+            onUpdate={setUserInfo}
+            refreshProfile={refreshProfile}
+          />
         </div>
         <h2 className="sr-only">Accounts</h2>
 

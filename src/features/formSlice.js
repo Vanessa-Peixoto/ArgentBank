@@ -1,5 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+/**
+ * @description Manages the state of a user login form
+ */
+
+/**
+ * @property {string} username - username
+ * @property {string} password - password
+ * @property {boolean} rememberMe - Indicates whether the "remember me" option is enabled.
+ */
 const initialState = {
   username: '',
   password: '',
@@ -9,7 +18,6 @@ const initialState = {
 const formSlice = createSlice({
   name: 'form',
   initialState,
-  //Modify state based on action sent
   reducers: {
     updateUsername: (state, action) => {
       state.username = action.payload;
@@ -20,15 +28,11 @@ const formSlice = createSlice({
     toggleRememberMe: (state) => {
       state.rememberMe = !state.rememberMe;
     },
-    submitForm: (state) => {
-      console.log('Formulaire soumis :', state);
-      // A remplir pour rediriger l'utilisateur si connexion reussi
-    }
   }
 });
 
 //Export actions to use them in the component
-export const { updateUsername, updatePassword, toggleRememberMe, submitForm } = formSlice.actions;
+export const { updateUsername, updatePassword, toggleRememberMe } = formSlice.actions;
 
 //Export of the reducer for the store
 export default formSlice.reducer;

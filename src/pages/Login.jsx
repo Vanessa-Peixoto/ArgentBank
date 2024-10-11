@@ -1,7 +1,7 @@
 import Form from "../component/Form/Form";
 import Footer from "../component/Footer/Footer";
 import Header from "../component/Header/Header";
-import './login.scss';
+import "./login.scss";
 
 function Login() {
   return (

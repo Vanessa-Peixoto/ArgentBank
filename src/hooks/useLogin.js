@@ -1,8 +1,17 @@
 import { useLoginMutation } from "../services/authApi";
 import { loginSuccess } from "../features/authSlice";
 
+/**
+ * @description A custom hook for handling user login functionality.
+ * @param {function} dispatch - The Redux dispatch function used to update the authentication state
+ * @param {function} setClientErrors - Function to set client-side validation errors.
+ * @param {function} setBackendErrors - Function to set backend response errors
+ * @returns {Object} An object containing:
+ *    {function} handleSubmit - Function to handle the form submission for login.
+ *    {boolean} isLoading - Indicates if the login mutation is in progress.
+ */
 const useLogin = (dispatch, setClientErrors, setBackendErrors) => {
-
+  
   //hook RTK Query create a mutation for the connection
   const [login, { isLoading }] = useLoginMutation();
 

@@ -1,5 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+/**
+ * @description Slice API to get user profile information
+*/
 export const profileApi = createApi({
     //name in the store
     reducerPath: "profileApi",

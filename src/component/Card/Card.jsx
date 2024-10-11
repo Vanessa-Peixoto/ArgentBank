@@ -1,6 +1,12 @@
 import PropTypes from "prop-types";
 import './card.scss';
 
+/**
+ * @component
+ * @param {string} props.image - icon image
+ * @param {React.ReactNode} props.children - The content to be displayed inside the card
+ * @returns {JSX.Element} Card component
+ */
 function Card({ image, children }) {
   return (
     <section className="features">

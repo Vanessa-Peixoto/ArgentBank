@@ -1,18 +1,21 @@
 import { restoreSession, logout } from "../features/authSlice";
 
-// Action pour vérifier la validité du token
+/**
+ *  @description Action to check the validity of the token
+*/ 
 export const checkTokenValidity = () => (dispatch) => {
-  const token = sessionStorage.getItem("token"); // Récupérer le token du sessionStorage
+    //retrieve token in the session storage
+  const token = sessionStorage.getItem("token");
   if (token) {
-    const isValid = isValidToken(token); // Vérifier la validité du token
+    const isValid = isValidToken(token);
     if (isValid) {
-      const user = JSON.parse(sessionStorage.getItem("user")); // Décoder le token pour obtenir les informations de l'utilisateur
-      dispatch(restoreSession(user)); // Restaurer la session
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      dispatch(restoreSession(user));
     } else {
-      dispatch(logout()); // Si le token n'est pas valide, déconnecter l'utilisateur
+      dispatch(logout());
     }
   } else {
-    dispatch(logout()); // Pas de token, donc déconnexion
+    dispatch(logout());
   }
 };
 

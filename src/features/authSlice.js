@@ -1,5 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+/**
+ * @description Manages user authentication status
+*/
+
+//Initial state of authentication
+/**
+ * @property {boolean} isConnected - Indicates whether the user is logged in or not
+ * @property {Object|null} user - Contain info of user logged
+ */
 const initialState = {
     isConnected: !!sessionStorage.getItem('token'),
     user: JSON.parse(sessionStorage.getItem('user')) || null,

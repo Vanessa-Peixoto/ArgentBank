@@ -9,8 +9,8 @@ import "../component/Card/card.scss";
 import "./home.scss";
 import Footer from "../component/Footer/Footer";
 
-
 function Home() {
+  
   const { t } = useTranslation();
 
   return (

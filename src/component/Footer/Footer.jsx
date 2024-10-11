@@ -1,9 +1,13 @@
 import { useTranslation } from "react-i18next";
-import './footer.scss';
+import "./footer.scss";
 
+/**
+ * @component
+ * @returns {JSX.Element} Footer component
+ */
 function Footer() {
-
-    const {t} = useTranslation();
+  
+  const { t } = useTranslation();
 
   return (
     <footer className="footer">

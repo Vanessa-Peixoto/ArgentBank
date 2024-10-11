@@ -2,36 +2,44 @@ import logo from "../../assets/images/argentBankLogo.png";
 import { Link } from "react-router-dom";
 import "./header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCircleUser,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
 import { logout } from "../../features/authSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useGetProfileMutation } from "../../services/profileApi";
 import { useEffect } from "react";
 
+/**
+ * @component
+ * @returns {JSX.Element} Header component
+ */
 function Header() {
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-   //retrieve authentication status
-   const isConnected = useSelector((state) => state.auth.isConnected);
+  //retrieve authentication status
+  const isConnected = useSelector((state) => state.auth.isConnected);
+  //retrieve user profil
+  const [getProfile, { data }] = useGetProfileMutation();
 
-   const [getProfile, { data }] = useGetProfileMutation();
-
-   useEffect(() => {
+  useEffect(() => {
     if (isConnected) {
       getProfile();
     }
   }, [getProfile, isConnected]);
 
   const firstName = data?.body?.firstName;
-  
-   //disconnect function
-   const handleLogout = () => {
+
+  //disconnect function
+  const handleLogout = () => {
     sessionStorage.removeItem("token");
     dispatch(logout());
-   }
-  
+  };
+
   return (
     <nav className="main-nav">
       <a className="main-nav-logo">
@@ -43,16 +51,16 @@ function Header() {
         <h1 className="sr-only">Argent Bank</h1>
       </a>
       <div>
-      {isConnected ? (
+        {isConnected ? (
           <>
             <Link className="main-nav-item">
-            <FontAwesomeIcon icon={faCircleUser} />
+              <FontAwesomeIcon icon={faCircleUser} />
               {firstName}
             </Link>
-            
-            <Link to='/' className="main-nav-item" onClick={handleLogout}>
+
+            <Link to="/" className="main-nav-item" onClick={handleLogout}>
               <FontAwesomeIcon icon={faRightFromBracket} />
-                {t("dashboard.logout")}
+              {t("dashboard.logout")}
             </Link>
           </>
         ) : (
@@ -60,7 +68,7 @@ function Header() {
             <FontAwesomeIcon icon={faCircleUser} />
             {t("signin.login")}
           </Link>
-      )}
+        )}
       </div>
     </nav>
   );

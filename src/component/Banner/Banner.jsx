@@ -1,6 +1,10 @@
 import "./banner.scss";
 import { useTranslation } from "react-i18next";
 
+/**
+ * @component
+ * @returns Banner component
+ */
 function Banner() {
   const { t } = useTranslation();
 

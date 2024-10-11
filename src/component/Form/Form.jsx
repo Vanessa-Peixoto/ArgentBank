@@ -4,11 +4,19 @@ import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
 import "./form.scss";
 import Button from "../Button/Button";
 import { useTranslation } from "react-i18next";
-import useLogin from "../../hooks/useLogin"; // Importez le hook personnalisé
-import { updateUsername, updatePassword, toggleRememberMe } from "../../features/formSlice"; // Assurez-vous d'importer les actions nécessaires
+import useLogin from "../../hooks/useLogin";
+import {
+  updateUsername,
+  updatePassword,
+  toggleRememberMe,
+} from "../../features/formSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 
+/**
+ * @component
+ * @returns {JSX.Element} Form component
+ */
 function Form() {
 
   const { t } = useTranslation();
@@ -18,13 +26,17 @@ function Form() {
   //hook react redux, read part of the state in the store
   //access the values of username, password...
   const { username, password, rememberMe } = useSelector((state) => state.form);
-  
+
   //store errors
   const [clientErrors, setClientErrors] = useState({});
   const [backendErrors, setBackendErrors] = useState({});
-  
+
   //call the hook which manage the connection
-  const { handleSubmit, isLoading } = useLogin(dispatch, setClientErrors, setBackendErrors);
+  const { handleSubmit, isLoading } = useLogin(
+    dispatch,
+    setClientErrors,
+    setBackendErrors
+  );
 
   return (
     <section className="sign-in-content">
@@ -32,10 +44,12 @@ function Form() {
         <FontAwesomeIcon icon={faCircleUser} />
         <h1>{t("signin.login")}</h1>
       </div>
-      <form onSubmit={(e) => {
+      <form
+        onSubmit={(e) => {
           e.preventDefault();
           handleSubmit(username, password, t, navigate);
-        }}>
+        }}
+      >
         <div className="input-wrapper">
           <label htmlFor="username">{t("signin.user")}</label>
           <input
@@ -44,14 +58,14 @@ function Form() {
             value={username}
             onChange={(e) => {
               dispatch(updateUsername(e.target.value));
-              setClientErrors({...clientErrors, username: ""});
+              setClientErrors({ ...clientErrors, username: "" });
             }}
           />
           {clientErrors.username && (
-              <p className="error-message">{clientErrors.username}</p>
+            <p className="error-message">{clientErrors.username}</p>
           )}
           {backendErrors.username && (
-              <p className="error-message">{backendErrors.username}</p>
+            <p className="error-message">{backendErrors.username}</p>
           )}
         </div>
         <div className="input-wrapper">
@@ -62,14 +76,14 @@ function Form() {
             value={password}
             onChange={(e) => {
               dispatch(updatePassword(e.target.value));
-              setClientErrors({...clientErrors, password:""});
+              setClientErrors({ ...clientErrors, password: "" });
             }}
           />
           {clientErrors.password && (
-              <p className="error-message">{clientErrors.password}</p>
+            <p className="error-message">{clientErrors.password}</p>
           )}
           {backendErrors.password && (
-              <p className="error-message">{backendErrors.password}</p>
+            <p className="error-message">{backendErrors.password}</p>
           )}
         </div>
         <div className="input-remember">
