@@ -8,6 +8,7 @@ function Login() {
     <>
       <Header />
       <main className="bg-dark">
+        <div className="wrap"></div>
         <Form />
       </main>
       <Footer />
